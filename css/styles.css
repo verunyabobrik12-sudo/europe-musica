@@ -777,33 +777,34 @@ h2{font-size:clamp(26px,2.7vw,40px)}
 .btn-sun{background:#B4502C;color:#fff}
 .btn-sun:hover{background:#963F20}
 .pill{background:none;padding:0 0 10px;border-radius:0;border-bottom:1px solid currentColor;font:700 13px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--soft);margin:0 0 22px}
-@media (min-width:900px){.hero .pill{color:rgba(255,255,255,.85)}}
 .stick b{background:#B4502C;color:#fff;border-radius:3px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:13px}
 .mbar .mbar-main{background:#B4502C;color:#fff;border-radius:3px}
-@media (min-width:900px){
-  .hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:stretch;min-height:0;background:#16283F}
-  .hero::before{display:none}
-  .hero-media{position:relative;inset:auto;order:2;aspect-ratio:16/9;align-self:center}
-  .hero-media video{object-fit:contain}
-  .hero-in{order:1;width:auto;max-width:none;margin:0;padding:56px clamp(28px,4vw,72px);display:flex;align-items:center}
-  .hero-cap{top:10px;bottom:auto;right:14px;text-shadow:0 1px 4px rgba(0,0,0,.6)}
-  .hero h1{max-width:14ch;font-size:clamp(34px,3.6vw,52px)}
+@media (min-width:1200px){
+  .hero{display:flex;align-items:flex-start;height:clamp(640px,calc(100svh - var(--top)),56.25vw);min-height:0;background:#16283F}
+  .hero::before{background:linear-gradient(90deg,rgba(14,26,46,.9) 0,rgba(14,26,46,.72) 34%,rgba(14,26,46,.12) 62%,rgba(14,26,46,0) 100%)}
+  .hero-media video{object-fit:cover;object-position:50% 100%}
+  .hero-in{padding-top:52px;padding-bottom:0}
+  .hero-cap{top:12px;bottom:auto;right:16px;text-shadow:0 1px 4px rgba(0,0,0,.6)}
+  .hero .pill{background:#fff;color:var(--ink);border:0;padding:9px 12px;border-radius:2px}
+  .hero h1{max-width:14ch;font-size:clamp(40px,3.4vw,54px)}
 }
-@media (max-width:899px){.hero-media{aspect-ratio:16/9}.hero-media video{object-fit:contain}.hero-cap{top:8px;bottom:auto}}
-@media (min-width:768px) and (max-width:899px){
+@media (max-width:1199px){.hero-media{aspect-ratio:16/9}.hero-media video{object-fit:contain}.hero-cap{top:8px;bottom:auto}}
+@media (min-width:768px) and (max-width:1199px){
   .hero{display:block;min-height:0;background:#16283F}
   .hero::before{display:none}
   .hero-media{position:relative;inset:auto;overflow:hidden}
-  .hero-in{padding-top:36px;padding-bottom:44px}
+  .hero-in{max-width:none;padding-top:36px;padding-bottom:44px}
+  .hero .pill{color:rgba(255,255,255,.85)}
 }
-/* отзывы: первая карточка у левого края, правый край растворяется до карты */
-.rv-grid{gap:56px}
+/* отзывы: первая карточка у левого края, второй виден только фрагмент, до карты — воздух */
+.rv-grid{gap:72px}
 .rv-wrap{grid-template-columns:auto auto 1fr}
-.rv-wrap .reviews{padding:6px 40px 6px 0;scroll-padding:0;
-  -webkit-mask-image:linear-gradient(90deg,#000 0,#000 78%,transparent 100%);mask-image:linear-gradient(90deg,#000 0,#000 78%,transparent 100%)}
-.rv-wrap .rv{scroll-snap-align:start}
+.rv-wrap .reviews{--cw:calc(100% - 110px);grid-auto-columns:var(--cw);padding:6px 0;scroll-padding:0;
+  -webkit-mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 90px),transparent 100%);mask-image:linear-gradient(90deg,#000 0,#000 calc(100% - 90px),transparent 100%)}
+.rv-wrap .rv{scroll-snap-align:start;aspect-ratio:auto!important;min-height:330px}
+@media (min-width:1024px){.rv-wrap .reviews{--cw:min(640px,calc(100% - 140px))}}
 #rvPrev{grid-column:1}#rvNext{grid-column:2}
-@media (max-width:639px){.rv-wrap .reviews{padding-right:0;-webkit-mask-image:none;mask-image:none}}
+@media (max-width:639px){.rv-wrap .reviews{--cw:calc((100vw - 40px)*.86);-webkit-mask-image:none;mask-image:none}.rv-wrap .rv{min-height:0}}
 
 /* v13: Барселона на карте — точка до отплытия */
 .pin.pre .dot{fill:#fff;stroke:var(--ink);stroke-width:2.5}
