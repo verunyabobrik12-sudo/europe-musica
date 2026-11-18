@@ -151,8 +151,13 @@ var PRICE_AFTER = "";        // например: "1 690 €"
   ];
   var PHOTO = { tarragona: 'img/u/tarragona-amph.jpg', marseille: 'img/u/marseille-sky.jpg', genoa: 'img/u/genoa-boccadasse.jpg', civitavecchia: 'img/u/rome-colosseum.jpg', palermo: 'img/u/palermo-cathedral-sq.jpg', ibiza: 'img/u/ibiza-daltvila.jpg', valencia: 'img/u/valencia-street.jpg', sea: 'img/ship-stern.jpg' };
   var SEA = [null, 'img/ship-stern.jpg'];
+  /* накануне круиза: Барселона (перелёт, ночь в отеле, утром трансфер в Таррагону) */
+  PHOTO.barcelona = 'img/port-barcelona.jpg';
+  DAYS.unshift({ d: '14 апреля', n: 'Накануне', id: 'barcelona', name: 'Барселона', c: 'Испания, Каталония', h: 'перелёт и ночь в отеле',
+    lead: 'Из Варшавы вы летите в Барселону и остаётесь здесь на ночь. Утром завтрак в отеле и трансфер в Таррагону, где ждёт лайнер.',
+    todo: 'Если после прилёта останется вечер: прогулка по Готическому кварталу и набережной, ужин в центре.', eat: 'Тапас, паэлья и каталонский крем на десерт.', fact: 'Барселона принимала летние Олимпийские игры 1992 года.' });
   var tabs = $('#days'), body = $('#dayBody'), glass = $('#routePorthole'), cur = 0;
-  if (glass) { var first = document.createElement('img'); first.src = PHOTO.tarragona; first.alt = ''; first.className = 'layer on'; glass.appendChild(first); }
+  if (glass) { var first = document.createElement('img'); first.src = PHOTO.barcelona; first.alt = ''; first.className = 'layer on'; glass.appendChild(first); }
   function setGlass(d) {
     if (!glass) return;
     var el;
@@ -169,6 +174,7 @@ var PRICE_AFTER = "";        // например: "1 690 €"
     $$('.pin', map).forEach(function (pin) {
       var m = /translate\(([\d.]+),([\d.]+)\)/.exec(pin.getAttribute('transform')), px = +m[1], py = +m[2], best = 0, bd = 1e9;
       for (var k = 0; k <= N; k++) { var pt = route.getPointAtLength(L * k / N), dd = (pt.x - px) * (pt.x - px) + (pt.y - py) * (pt.y - py); if (dd < bd) { bd = dd; best = L * k / N; } }
+      if (pin.classList.contains('pre')) best = 0;
       pinLen[pin.getAttribute('data-i')] = best;
       pin.addEventListener('click', function () { show(+pin.getAttribute('data-i'), true); });
       pin.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); show(+pin.getAttribute('data-i'), true); } });

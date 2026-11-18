@@ -790,6 +790,12 @@ h2{font-size:clamp(26px,2.7vw,40px)}
   .hero h1{max-width:14ch;font-size:clamp(34px,3.6vw,52px)}
 }
 @media (max-width:899px){.hero-media{aspect-ratio:16/9}.hero-media video{object-fit:contain}.hero-cap{top:8px;bottom:auto}}
+@media (min-width:768px) and (max-width:899px){
+  .hero{display:block;min-height:0;background:#16283F}
+  .hero::before{display:none}
+  .hero-media{position:relative;inset:auto;overflow:hidden}
+  .hero-in{padding-top:36px;padding-bottom:44px}
+}
 /* отзывы: первая карточка у левого края, правый край растворяется до карты */
 .rv-grid{gap:56px}
 .rv-wrap{grid-template-columns:auto auto 1fr}
@@ -798,3 +804,7 @@ h2{font-size:clamp(26px,2.7vw,40px)}
 .rv-wrap .rv{scroll-snap-align:start}
 #rvPrev{grid-column:1}#rvNext{grid-column:2}
 @media (max-width:639px){.rv-wrap .reviews{padding-right:0;-webkit-mask-image:none;mask-image:none}}
+
+/* v13: Барселона на карте — точка до отплытия */
+.pin.pre .dot{fill:#fff;stroke:var(--ink);stroke-width:2.5}
+.pin.pre.on .dot{fill:var(--blue);stroke:#fff}
