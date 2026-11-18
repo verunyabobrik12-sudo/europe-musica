@@ -773,19 +773,19 @@ h2{font-size:clamp(26px,2.7vw,40px)}
 @media (max-width:759px){.sx-panel{display:none;grid-area:auto}.sx-panel.on{display:flex}}
 
 /* ===== v13 (18.11.2026): первый экран без обрезки видео, кнопки без «ИИ-жёлтого», отзывы от левого края ===== */
-.btn{border-radius:3px;min-height:52px;padding:0 28px;font:700 14px/1 var(--body);letter-spacing:.08em;text-transform:uppercase}
+.btn{border-radius:14px;min-height:52px;padding:0 28px;font:800 16px/1 var(--body);letter-spacing:0;text-transform:none}
 .btn-sun{background:#B4502C;color:#fff}
 .btn-sun:hover{background:#963F20}
 .pill{background:none;padding:0 0 10px;border-radius:0;border-bottom:1px solid currentColor;font:700 13px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--soft);margin:0 0 22px}
-.stick b{background:#B4502C;color:#fff;border-radius:3px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:13px}
-.mbar .mbar-main{background:#B4502C;color:#fff;border-radius:3px}
+.stick b{background:#B4502C;color:#fff;border-radius:10px;font-weight:800;letter-spacing:0;text-transform:none;font-size:15px}
+.mbar .mbar-main{background:#B4502C;color:#fff;border-radius:10px}
 @media (min-width:1200px){
   .hero{display:flex;align-items:flex-start;height:auto;min-height:0;background:#16283F}
   .hero::before{background:linear-gradient(90deg,rgba(14,26,46,.9) 0,rgba(14,26,46,.72) 34%,rgba(14,26,46,.12) 62%,rgba(14,26,46,0) 100%)}
   .hero-media video{object-fit:cover;object-position:50% 0}
   .hero-in{padding-top:52px;padding-bottom:56px}
   .hero-cap{top:12px;bottom:auto;right:16px;text-shadow:0 1px 4px rgba(0,0,0,.6)}
-  .hero .pill{background:#fff;color:var(--ink);border:0;padding:9px 12px;border-radius:2px}
+  .hero .pill{background:none;color:#fff;border:0;padding:0;border-radius:0;font:700 17px/1.3 var(--body);letter-spacing:0;text-transform:none;text-shadow:0 1px 8px rgba(0,0,0,.45);margin:0 0 18px}
   .hero h1{max-width:14ch;font-size:clamp(40px,3.4vw,54px)}
 }
 @media (max-width:1199px){.hero-media{aspect-ratio:16/9}.hero-media video{object-fit:contain}.hero-cap{top:8px;bottom:auto}}
