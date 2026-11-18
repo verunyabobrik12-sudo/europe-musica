@@ -151,16 +151,24 @@ var PRICE_AFTER = "";        // например: "1 690 €"
   ];
   var PHOTO = { tarragona: 'img/u/tarragona-amph.jpg', marseille: 'img/u/marseille-sky.jpg', genoa: 'img/u/genoa-boccadasse.jpg', civitavecchia: 'img/u/rome-colosseum.jpg', palermo: 'img/u/palermo-cathedral-sq.jpg', ibiza: 'img/u/ibiza-daltvila.jpg', valencia: 'img/u/valencia-street.jpg', sea: 'img/ship-stern.jpg' };
   var SEA = [null, 'img/ship-stern.jpg'];
-  /* Валенсия: обратный перелёт вечером, около 19–20 часов (со слов Вероники, 18.11.2026) */
-  DAYS.forEach(function (d) { if (d.id === 'valencia') {
-    d.lead = 'Последний порт: высадка утром, а перелёт Валенсия — Варшава вечером, около 19–20 часов. Целый день можно гулять по городу.';
-    d.todo = 'Город искусств и наук Сантьяго Калатравы, площадь Ратуши и центральный рынок.';
-  } });
   /* накануне круиза: Барселона (перелёт, ночь в отеле, утром трансфер в Таррагону) */
   PHOTO.barcelona = 'img/port-barcelona.jpg';
   DAYS.unshift({ d: '14 апреля', n: 'Накануне', id: 'barcelona', name: 'Барселона', c: 'Испания, Каталония', h: 'перелёт и ночь в отеле',
     lead: 'Из Варшавы вы летите в Барселону и остаётесь здесь на ночь. Утром завтрак в отеле и трансфер в Таррагону, где ждёт лайнер.',
-    todo: 'Если после прилёта останется вечер: прогулка по Готическому кварталу и набережной, ужин в центре.', eat: 'Тапас, паэлья и каталонский крем на десерт.', factLabel: 'О городе', fact: 'Город между горой Тибидабо и Средиземным морем: готические кварталы с узкими улочками, сказочные дома Гауди, широкие песчаные пляжи и бульвар Рамбла, где вечером гуляет весь город.' });
+    todo: 'Если после прилёта останется вечер: прогулка по Готическому кварталу и набережной, ужин в центре.', eat: 'Тапас, паэлья и каталонский крем на десерт.' });
+  /* красивые описания городов вместо плашки «Интересно» (18.11.2026); практические детали вшиты в описание */
+  var DESC = {
+    barcelona: 'Город между горой Тибидабо и Средиземным морем: готические кварталы с узкими улочками, сказочные дома Гауди, широкие песчаные пляжи и бульвар Рамбла, где вечером гуляет весь город. Из Варшавы вы прилетаете сюда, остаётесь на ночь, а утром завтрак в отеле и трансфер в Таррагону.',
+    tarragona: 'Римская колония на холме над морем: амфитеатр прямо у воды, узкие улочки старого города вокруг собора и набережная, которую зовут «Балконом Средиземноморья». Утром трансфер из Барселоны, примерно 100 км по побережью, и до посадки остаётся время на прогулку.',
+    marseille: 'Старейший город Франции, основанный греками около 600 года до н. э. Сотни яхт в Старом порту, белая базилика на холме над городом и пёстрые улочки квартала Панье.',
+    genoa: 'Город моряков и купцов, где дворцы стоят вплотную, а между ними вьются узкие улочки-«каруджи». Считается, что здесь родился Колумб, а от причала до старого центра рукой подать.',
+    civitavecchia: 'Отсюда начинается дорога в Вечный город: Колизей, форум, фонтаны и узкие римские улицы. До Рима около 80 км, поезд идёт час-полтора, а одиннадцати часов стоянки хватает, чтобы увидеть главное, если выйти с утра.',
+    palermo: 'Столица Сицилии, где сошлись арабы, норманны и барокко: золотая мозаика, шумные рынки и дворцы с кружевными фасадами. Лайнер приходит в 11 утра, поэтому утро можно не спешить.',
+    ibiza: 'Белый город на холме за крепостными стенами. Днём тихие улицы старого города Дальт-Вила, вечером закат с высоких стен. Лайнер приходит после обеда и уходит поздно вечером.',
+    valencia: 'Город, где старая Европа встречается с будущим: готические башни, рынок под модернистской крышей и футуристический Город искусств и наук. Высадка утром, а вечером, около 19–20 часов, перелёт Валенсия — Варшава, так что целый день можно гулять по городу.'
+  };
+  DAYS.forEach(function (d) { if (DESC[d.id]) d.lead = DESC[d.id]; });
+
   var tabs = $('#days'), body = $('#dayBody'), glass = $('#routePorthole'), cur = 0;
   if (glass) { var first = document.createElement('img'); first.src = PHOTO.barcelona; first.alt = ''; first.className = 'layer on'; glass.appendChild(first); }
   function setGlass(d) {
@@ -217,7 +225,7 @@ var PRICE_AFTER = "";        // например: "1 690 €"
     $$('button', tabs).forEach(function (b, k) { b.setAttribute('aria-selected', k === cur ? 'true' : 'false'); b.tabIndex = k === cur ? 0 : -1; });
     $('#dayCard').setAttribute('aria-labelledby', 'tab-' + cur);
     body.innerHTML = '<p class="when">' + esc(d.n) + ', ' + esc(d.d) + '</p><h3>' + esc(d.name) + '</h3><p class="meta">' + esc(d.c) + ' · ' + esc(d.h) + '</p><p class="lead2">' + esc(d.lead) +
-      '</p><dl><div><dt>Что успеть</dt><dd>' + esc(d.todo) + '</dd></div><div><dt>Что попробовать</dt><dd>' + esc(d.eat) + '</dd></div><div><dt>' + esc(d.factLabel || 'Интересно') + '</dt><dd>' + esc(d.fact) + '</dd></div></dl>';
+      '</p><dl><div><dt>Что успеть</dt><dd>' + esc(d.todo) + '</dd></div><div><dt>Что попробовать</dt><dd>' + esc(d.eat) + '</dd></div></dl>';
     if (map) $$('.pin', map).forEach(function (p) { p.classList.toggle('on', +p.getAttribute('data-i') === cur); });
     if (fromUser) { setGlass(d); sailTo(cur); }
     var tb = $('#tab-' + cur);
@@ -234,7 +242,7 @@ var PRICE_AFTER = "";        // например: "1 690 €"
   /* «Знали ли вы» */
   var factEl = $('#fact');
   if (factEl) {
-    var facts = DAYS.filter(function (d) { return !d.sea && !d.factLabel; }).map(function (d) { return d.name + ': ' + d.fact; });
+    var facts = DAYS.filter(function (d) { return !d.sea && d.fact; }).map(function (d) { return d.name + ': ' + d.fact; });
     var fi = Math.floor(Math.random() * facts.length);
     var showFact = function () { factEl.textContent = facts[fi]; fi = (fi + 1) % facts.length; };
     showFact(); $('#nextFact').addEventListener('click', showFact);
