@@ -160,7 +160,7 @@ var PRICE_AFTER = "";        // например: "1 690 €"
   PHOTO.barcelona = 'img/port-barcelona.jpg';
   DAYS.unshift({ d: '14 апреля', n: 'Накануне', id: 'barcelona', name: 'Барселона', c: 'Испания, Каталония', h: 'перелёт и ночь в отеле',
     lead: 'Из Варшавы вы летите в Барселону и остаётесь здесь на ночь. Утром завтрак в отеле и трансфер в Таррагону, где ждёт лайнер.',
-    todo: 'Если после прилёта останется вечер: прогулка по Готическому кварталу и набережной, ужин в центре.', eat: 'Тапас, паэлья и каталонский крем на десерт.', fact: 'Барселона принимала летние Олимпийские игры 1992 года.' });
+    todo: 'Если после прилёта останется вечер: прогулка по Готическому кварталу и набережной, ужин в центре.', eat: 'Тапас, паэлья и каталонский крем на десерт.', factLabel: 'О городе', fact: 'Город между горой Тибидабо и Средиземным морем: готические кварталы с узкими улочками, сказочные дома Гауди, широкие песчаные пляжи и бульвар Рамбла, где вечером гуляет весь город.' });
   var tabs = $('#days'), body = $('#dayBody'), glass = $('#routePorthole'), cur = 0;
   if (glass) { var first = document.createElement('img'); first.src = PHOTO.barcelona; first.alt = ''; first.className = 'layer on'; glass.appendChild(first); }
   function setGlass(d) {
@@ -217,7 +217,7 @@ var PRICE_AFTER = "";        // например: "1 690 €"
     $$('button', tabs).forEach(function (b, k) { b.setAttribute('aria-selected', k === cur ? 'true' : 'false'); b.tabIndex = k === cur ? 0 : -1; });
     $('#dayCard').setAttribute('aria-labelledby', 'tab-' + cur);
     body.innerHTML = '<p class="when">' + esc(d.n) + ', ' + esc(d.d) + '</p><h3>' + esc(d.name) + '</h3><p class="meta">' + esc(d.c) + ' · ' + esc(d.h) + '</p><p class="lead2">' + esc(d.lead) +
-      '</p><dl><div><dt>Что успеть</dt><dd>' + esc(d.todo) + '</dd></div><div><dt>Что попробовать</dt><dd>' + esc(d.eat) + '</dd></div><div><dt>Интересно</dt><dd>' + esc(d.fact) + '</dd></div></dl>';
+      '</p><dl><div><dt>Что успеть</dt><dd>' + esc(d.todo) + '</dd></div><div><dt>Что попробовать</dt><dd>' + esc(d.eat) + '</dd></div><div><dt>' + esc(d.factLabel || 'Интересно') + '</dt><dd>' + esc(d.fact) + '</dd></div></dl>';
     if (map) $$('.pin', map).forEach(function (p) { p.classList.toggle('on', +p.getAttribute('data-i') === cur); });
     if (fromUser) { setGlass(d); sailTo(cur); }
     var tb = $('#tab-' + cur);
