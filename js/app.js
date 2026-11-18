@@ -151,6 +151,11 @@ var PRICE_AFTER = "";        // например: "1 690 €"
   ];
   var PHOTO = { tarragona: 'img/u/tarragona-amph.jpg', marseille: 'img/u/marseille-sky.jpg', genoa: 'img/u/genoa-boccadasse.jpg', civitavecchia: 'img/u/rome-colosseum.jpg', palermo: 'img/u/palermo-cathedral-sq.jpg', ibiza: 'img/u/ibiza-daltvila.jpg', valencia: 'img/u/valencia-street.jpg', sea: 'img/ship-stern.jpg' };
   var SEA = [null, 'img/ship-stern.jpg'];
+  /* Валенсия: обратный перелёт вечером, около 19–20 часов (со слов Вероники, 18.11.2026) */
+  DAYS.forEach(function (d) { if (d.id === 'valencia') {
+    d.lead = 'Последний порт: высадка утром, а перелёт Валенсия — Варшава вечером, около 19–20 часов. Целый день можно гулять по городу.';
+    d.todo = 'Город искусств и наук Сантьяго Калатравы, площадь Ратуши и центральный рынок.';
+  } });
   /* накануне круиза: Барселона (перелёт, ночь в отеле, утром трансфер в Таррагону) */
   PHOTO.barcelona = 'img/port-barcelona.jpg';
   DAYS.unshift({ d: '14 апреля', n: 'Накануне', id: 'barcelona', name: 'Барселона', c: 'Испания, Каталония', h: 'перелёт и ночь в отеле',
