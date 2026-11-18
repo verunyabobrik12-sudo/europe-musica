@@ -780,10 +780,10 @@ h2{font-size:clamp(26px,2.7vw,40px)}
 .stick b{background:#B4502C;color:#fff;border-radius:3px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:13px}
 .mbar .mbar-main{background:#B4502C;color:#fff;border-radius:3px}
 @media (min-width:1200px){
-  .hero{display:flex;align-items:flex-start;height:clamp(640px,calc(100svh - var(--top)),56.25vw);min-height:0;background:#16283F}
+  .hero{display:flex;align-items:flex-start;height:auto;min-height:0;background:#16283F}
   .hero::before{background:linear-gradient(90deg,rgba(14,26,46,.9) 0,rgba(14,26,46,.72) 34%,rgba(14,26,46,.12) 62%,rgba(14,26,46,0) 100%)}
-  .hero-media video{object-fit:cover;object-position:50% 100%}
-  .hero-in{padding-top:52px;padding-bottom:0}
+  .hero-media video{object-fit:cover;object-position:50% 0}
+  .hero-in{padding-top:52px;padding-bottom:56px}
   .hero-cap{top:12px;bottom:auto;right:16px;text-shadow:0 1px 4px rgba(0,0,0,.6)}
   .hero .pill{background:#fff;color:var(--ink);border:0;padding:9px 12px;border-radius:2px}
   .hero h1{max-width:14ch;font-size:clamp(40px,3.4vw,54px)}
