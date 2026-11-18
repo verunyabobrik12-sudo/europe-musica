@@ -809,3 +809,9 @@ h2{font-size:clamp(26px,2.7vw,40px)}
 /* v13: Барселона на карте — точка до отплытия */
 .pin.pre .dot{fill:#fff;stroke:var(--ink);stroke-width:2.5}
 .pin.pre.on .dot{fill:var(--blue);stroke:#fff}
+
+/* v14 (18.11.2026): заголовок в две строки, кнопка под ценой */
+.hero-buy{flex-direction:column;align-items:flex-start;gap:22px}
+.hero-buy .btn{flex:none}
+@media (min-width:1200px){.hero h1{max-width:none}}
+@media (max-width:767px){.hero h1{max-width:none;font-size:clamp(22px,6.1vw,34px)}.hero-buy{align-items:stretch}.hero-buy .btn{width:100%}}
