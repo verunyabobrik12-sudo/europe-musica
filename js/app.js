@@ -234,7 +234,7 @@ var PRICE_AFTER = "";        // например: "1 690 €"
   /* «Знали ли вы» */
   var factEl = $('#fact');
   if (factEl) {
-    var facts = DAYS.filter(function (d) { return !d.sea; }).map(function (d) { return d.name + ': ' + d.fact; });
+    var facts = DAYS.filter(function (d) { return !d.sea && !d.factLabel; }).map(function (d) { return d.name + ': ' + d.fact; });
     var fi = Math.floor(Math.random() * facts.length);
     var showFact = function () { factEl.textContent = facts[fi]; fi = (fi + 1) % facts.length; };
     showFact(); $('#nextFact').addEventListener('click', showFact);
