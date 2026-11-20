@@ -4,7 +4,7 @@
  * Пока номер счётчика COUNTER не указан, сайт не ставит ничего, кроме технического, и баннер не показывается.
  */
 (function () {
-  var COUNTER = null; // [УТОЧНИТЬ] номер счётчика Яндекс Метрики для этого лендинга
+  var COUNTER = 114389961; // счётчик «Europe 2027 on Musica» (аккаунт NDtavelDshauchenko), создан 20.11.2026
   var KEY = 'musica_cookie_consent';
   var YEAR = 365 * 24 * 60 * 60 * 1000;
 
